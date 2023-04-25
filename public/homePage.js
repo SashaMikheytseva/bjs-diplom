@@ -1,8 +1,8 @@
 //Реализация страницы «Личный кабинет пользователя»
 
 //выход из лк
-const logoutBtn = new LogoutButton();
-logout.action = () => {
+const logOut = new LogoutButton();
+logOut.action = () => {
   ApiConnector.logout((response) => {
     if (response.success) {
       location.reload();
@@ -18,12 +18,12 @@ ApiConnector.current((response) => {
 });
 
 //Получение текущих курсов валюты
-const ratesBoards = new RatesBoard();
+const ratesBoard = new RatesBoard();
 function getRates() {
   ApiConnector.getStocks((response) => {
   if (response.success) {
-    ratesBoards.clearTable();
-    ratesBoards.fillTable(response.data);
+    ratesBoard.clearTable();
+    ratesBoard.fillTable(response.data);
   }
  });
 }
