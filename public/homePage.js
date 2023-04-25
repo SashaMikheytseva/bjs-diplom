@@ -3,7 +3,7 @@
 //выход из лк
 const logoutBtn = new LogoutButton();
 logout.action = () => {
-  ApiConnector.logout(response => {
+  ApiConnector.logout((response) => {
     if (response.success) {
       location.reload();
     }
@@ -11,7 +11,7 @@ logout.action = () => {
 }
 
 //Получение информации о пользователе
-ApiConnector.current(response => {
+ApiConnector.current((response) => {
   if (response.success) {
     ProfileWidget.showProfile(response.data)
   }
@@ -20,7 +20,7 @@ ApiConnector.current(response => {
 //Получение текущих курсов валюты
 const ratesBoards = new RatesBoard();
 function getRates() {
-  ApiConnector.getStocks(response => {
+  ApiConnector.getStocks((response) => {
   if (response.success) {
     ratesBoards.clearTable();
     ratesBoards.fillTable(response.data);
@@ -74,7 +74,7 @@ moneyManager.sendMoneyCallback = function ({ to, currency, amount }) {
 const favoritesWidget = new FavoritesWidget;
 
 //Запросите начальный список избранного
-ApiConnector.getFavorites(response => {
+ApiConnector.getFavorites((response) => {
   if (response.success) {
     favoritesWidget.clearTable();
     favoritesWidget.fillTable(response.data);
